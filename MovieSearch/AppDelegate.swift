@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        MovieController.fetchMovie(with: "jack reacher") { (movies) in
+//            guard let movies = movies else { return }
+//            guard let firstMovie = movies.first else { return }
+//            
+//            MovieController.fetchPosterImage(with: firstMovie, completion: { (image) in
+//                guard let image = image else { return }
+//                print(image.pngData())
+//            })
+//        }
         return true
     }
 
