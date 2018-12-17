@@ -16,20 +16,22 @@ class MoviesTableViewController: UITableViewController {
     // MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        // add search bar to navigation bar
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search a movie..."
-        searchController.searchBar.autocapitalizationType = .words
-        navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
+        tableView.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        setupNavBar()
     }
     
-    func setupView() {
-        tableView.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+    func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.autocapitalizationType = .words
+        searchController.searchBar.autocorrectionType = .yes
+        searchController.searchBar.placeholder = "Search a movie..."
     }
+    
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +59,6 @@ extension MoviesTableViewController: UISearchBarDelegate {
                 self.navigationItem.hidesSearchBarWhenScrolling = true
                 searchBar.text = nil
             }
-            
         }
     }
 }

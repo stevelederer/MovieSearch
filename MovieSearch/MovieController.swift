@@ -15,7 +15,6 @@ class MovieController {
     private static let apiKey = "aa6a29c725f049d265eb3253d907d147"
     
     // MARK: - Fetching
-    // URL SHOULD LOOK LIKE THIS: https://api.themoviedb.org/3/search/movie?api_key=aa6a29c725f049d265eb3253d907d147&query=Jack+Reacher
     static func fetchMovie(with searchTerm: String, completion: @escaping ([Movie]?) -> Void) {
         // URL
         guard let url = baseMovieURL?.appendingPathComponent("3").appendingPathComponent("search").appendingPathComponent("movie") else { completion(nil); return }
@@ -26,7 +25,7 @@ class MovieController {
         
         guard let requestURL = components?.url else { completion(nil) ; return }
         
-        print("📡📡📡 Movie URL: \(requestURL.absoluteString) 📡📡📡")
+//        print("📡📡📡 Movie URL: \(requestURL.absoluteString) 📡📡📡")
         
         // REQUEST
         let request = URLRequest(url: requestURL)
@@ -57,10 +56,9 @@ class MovieController {
     static func fetchPosterImage(with movie: Movie, completion: @escaping (UIImage?) -> Void) {
         
         // URL
-        // URL SHOULD LOOK LIKE THIS: https://image.tmdb.org/t/p/w500//38bmEXmuJuInLs9dwfgOGCHmZ7l.jpg
         if let posterPath = movie.posterPath {
             guard let imageURL = baseImageURL?.appendingPathComponent("t").appendingPathComponent("p").appendingPathComponent("w500").appendingPathComponent(posterPath) else { completion(nil) ; return }
-            print("📡📡📡 Image URL:\(imageURL.absoluteString) 📡📡📡")
+//            print("📡📡📡 Image URL:\(imageURL.absoluteString) 📡📡📡")
             
             let request = URLRequest(url: imageURL)
             
